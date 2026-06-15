@@ -19,5 +19,10 @@ const gameBoard = (() => {
         })();
         boardSpaces.push(newSpace);
     }
-    return { boardSpaces };
+
+    const updateSpace = (activePlayer, index) => {
+        boardSpaces[index].setOccupied(activePlayer);
+    }
+
+    return { updateSpace };
 })();
