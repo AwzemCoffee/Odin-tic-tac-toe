@@ -84,6 +84,8 @@ const gameController = (() => {
 
     const domController = (() => {
         const boardContainer = document.querySelector(".board-container");
+        const newButton = document.querySelector(".newButton");
+
 
         let boardTilesDOM = function (spaces) {
             spaces.forEach((tile, index) => {
@@ -108,6 +110,23 @@ const gameController = (() => {
                 setActivePlayer();
             }
         });
+
+        newButton.addEventListener("click", (e) => {
+            const resetBoard = (() => {
+                const boardContainer = document.querySelector(".board-container");
+                const tileMarkerNodes = boardContainer.querySelectorAll("p")
+                console.table(tileMarkerNodes);
+                gameBoard.spaces = new Array(9).fill(null);
+                turnCount = 1;
+                activePlayer = playerOne;
+                roundWinner = null;
+                tileMarkerNodes.forEach(tileText => {
+                    tileText.textContent = null;
+                })
+            })();
+
+        });
+
         return { boardTilesDOM };
     })();
     return { getTurnCount, populateSpace, getSpaces, getAllSpaces, domController }
