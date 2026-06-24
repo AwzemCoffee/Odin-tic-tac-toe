@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
@@ -69,6 +71,7 @@ h6 {
 
 /*--- CSS Vars && General Setup */
 :root {
+    font-family: roboto;
     --button-background: #c26b6b;
     --minor-text: #dadcdd;
     --gameboard-body: #999EA1;
