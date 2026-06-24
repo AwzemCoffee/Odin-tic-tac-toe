@@ -1,7 +1,7 @@
 const gameController = (() => {
 
     const gameBoard = (() => {
-        let spaces = new Array(8).fill(null);
+        let spaces = new Array(9).fill(null);
         return { spaces };
     })();
 
@@ -48,7 +48,7 @@ const gameController = (() => {
     }
 
     function getAllSpaces() {
-        console.table(gameBoard.spaces)
+        return gameBoard.spaces;
     }
 
     function checkWinCondition() {
@@ -80,5 +80,27 @@ const gameController = (() => {
         }
     }
 
-    return { getTurnCount, populateSpace, getSpaces, getAllSpaces }
+    const domController = (() => {
+        const boardContainer = document.querySelector(".board-container");
+
+        let boardTilesDOM = (function (spaces) {
+            spaces.forEach((tile, index) => {
+                const currentTile = document.createElement("div");
+                const currentTileMarker = document.createElement("p");
+                currentTile.setAttribute("class", "boardPlace");
+                currentTile.setAttribute("id", `tile-${index}`);
+                currentTile.appendChild(currentTileMarker);
+                boardContainer.appendChild(currentTile);
+            });
+        })(getAllSpaces());
+
+        addEventListener("click", (e) => {
+            if (e.target.matches('.boardPlace')) {
+                let target = e.target.id;
+                console.log(target);
+            }
+        });
+        return { boardTilesDOM };
+    })();
+    return { getTurnCount, populateSpace, getSpaces, getAllSpaces, domController }
 })();
