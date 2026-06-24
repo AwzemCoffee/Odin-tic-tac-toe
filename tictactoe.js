@@ -1,4 +1,3 @@
-
 const gameController = (() => {
 
     const gameBoard = (() => {
