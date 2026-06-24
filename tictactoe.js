@@ -39,7 +39,6 @@ const gameController = (() => {
             gameBoard.spaces[index] = activePlayer.playerMark;
             checkWinCondition();
             incrementTurn();
-            setActivePlayer();
         } else console.log("Already Occupied")
     }
 
@@ -83,21 +82,27 @@ const gameController = (() => {
     const domController = (() => {
         const boardContainer = document.querySelector(".board-container");
 
-        let boardTilesDOM = (function (spaces) {
+        let boardTilesDOM = function (spaces) {
             spaces.forEach((tile, index) => {
                 const currentTile = document.createElement("div");
                 const currentTileMarker = document.createElement("p");
                 currentTile.setAttribute("class", "boardPlace");
-                currentTile.setAttribute("id", `tile-${index}`);
+                currentTile.setAttribute("id", `${index}`);
+                currentTileMarker.setAttribute("id", `markerID-${index}`);
                 currentTile.appendChild(currentTileMarker);
                 boardContainer.appendChild(currentTile);
             });
-        })(getAllSpaces());
+        }
+        boardTilesDOM(getAllSpaces());
 
         addEventListener("click", (e) => {
             if (e.target.matches('.boardPlace')) {
                 let target = e.target.id;
                 console.log(target);
+                populateSpace(target);
+                let internalMarker = e.target.querySelector("p");
+                internalMarker.textContent = activePlayer.playerMark;
+                setActivePlayer();
             }
         });
         return { boardTilesDOM };
