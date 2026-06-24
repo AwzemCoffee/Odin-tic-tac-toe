@@ -103,8 +103,22 @@ body {
     background-color: white;
 }
 
+.board-container>.boardPlace:hover {
+    background-color: #EFEEF5;
+}
+
 .newButton {
     margin-bottom: 32px;
     width: 12%;
     align-self: center;
+    color: var(--minor-text);
+    background-color: var(--button-background);
+    border: 1.5px solid var(--gameboard-body);
+    border-radius: 3px;
+
+    box-shadow: 0px 3px 3px;
+}
+
+.newButton:hover {
+    background-color: color-mix(in oklab, var(--button-background), black 3%);
 }
