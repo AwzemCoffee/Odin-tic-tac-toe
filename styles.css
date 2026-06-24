@@ -101,6 +101,11 @@ body {
 
 .board-container>.boardPlace {
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 6rem;
 }
 
 .board-container>.boardPlace:hover {

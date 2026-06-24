@@ -1,5 +1,7 @@
 const gameController = (() => {
 
+    let roundWinner = null;
+
     const gameBoard = (() => {
         let spaces = new Array(9).fill(null);
         return { spaces };
@@ -37,7 +39,7 @@ const gameController = (() => {
     function populateSpace(index) {
         if (isOccupied(index) === false) {
             gameBoard.spaces[index] = activePlayer.playerMark;
-            checkWinCondition();
+            roundWinner = checkWinCondition();
             incrementTurn();
         } else console.log("Already Occupied")
     }
@@ -51,6 +53,7 @@ const gameController = (() => {
     }
 
     function checkWinCondition() {
+        let winner;
         if (getTurnCount() === 9) {
             console.log("Tie")
         } else {
@@ -64,7 +67,6 @@ const gameController = (() => {
                 [1, 4, 7],
                 [2, 5, 8],
             ];
-            let winner = null;
             let wonBoolean = answerKey.some((ansKey) => {
                 return ansKey.every((index) => {
                     return gameBoard.spaces[index] === activePlayer.playerMark;
@@ -73,6 +75,7 @@ const gameController = (() => {
             if (wonBoolean === true) {
                 console.log(`${activePlayer.playerName} has won!`);
                 winner = activePlayer.playerName;
+                return winner;
             } else {
                 console.log(`No winner yet`);
             }
@@ -96,7 +99,7 @@ const gameController = (() => {
         boardTilesDOM(getAllSpaces());
 
         addEventListener("click", (e) => {
-            if (e.target.matches('.boardPlace')) {
+            if (e.target.matches('.boardPlace') && !roundWinner) {
                 let target = e.target.id;
                 console.log(target);
                 populateSpace(target);
