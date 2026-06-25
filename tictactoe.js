@@ -84,6 +84,8 @@ const gameController = (() => {
     const domController = (() => {
         const boardContainer = document.querySelector(".board-container");
         const newButton = document.querySelector(".newButton");
+        const submitButton = document.querySelector("#submit-button");
+        const userDataForm = document.querySelector(".userDataForm");
 
         // Generate board DOM
         let boardTilesDOM = function (spaces) {
@@ -100,7 +102,7 @@ const gameController = (() => {
         boardTilesDOM(getAllSpaces());
 
         // Mark board
-        addEventListener("click", (e) => {
+        boardContainer.addEventListener("click", (e) => {
             if (e.target.matches('.boardPlace') && !roundWinner) {
                 let target = e.target.id;
                 console.log(target);
@@ -126,6 +128,13 @@ const gameController = (() => {
             })();
         });
 
+        // Change names
+        submitButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            playerOne.playerName = document.getElementById("PlayerOneName").value;
+            playerTwo.playerName = document.getElementById("PlayerTwoName").value;
+            userDataForm.reset();
+        });
         return { boardTilesDOM };
     })();
     return { getTurnCount, populateSpace, getSpaces, getAllSpaces, domController }
