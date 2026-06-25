@@ -74,10 +74,11 @@ const gameController = (() => {
         if (wonBoolean === true) {
             console.log(`${activePlayer.playerName} has won!`);
             winner = activePlayer.playerName;
-            return winner;
+            domController.renderWinner(winner);
         } else if (wonBoolean != true && getTurnCount() === 9) {
             console.log(`tie`);
-            return winner = "tie";
+            winner = "tie";
+            domController.renderWinner(winner)
         }
     }
 
@@ -86,6 +87,7 @@ const gameController = (() => {
         const newButton = document.querySelector(".newButton");
         const submitButton = document.querySelector("#submit-button");
         const userDataForm = document.querySelector(".userDataForm");
+        const mainContentContainer = document.querySelector(".main-content-container");
 
         // Generate board DOM
         let boardTilesDOM = function (spaces) {
@@ -135,7 +137,19 @@ const gameController = (() => {
             playerTwo.playerName = document.getElementById("PlayerTwoName").value;
             userDataForm.reset();
         });
-        return { boardTilesDOM };
+        let renderWinner = function (winner) {
+            const winDisplay = document.createElement("div");
+            const winDisplayText = document.createElement("p");
+            winDisplay.setAttribute("ID", "winnerDisplay");
+            if (winner != "tie") {
+                winDisplayText.textContent = `${winner} has won!`
+            } else {
+                winDisplayText.textContent = "It is a tie"
+            }
+            winDisplay.appendChild(winDisplayText);
+            mainContentContainer.appendChild(winDisplay)
+        }
+        return { boardTilesDOM, renderWinner };
     })();
     return { getTurnCount, populateSpace, getSpaces, getAllSpaces, domController }
 })();

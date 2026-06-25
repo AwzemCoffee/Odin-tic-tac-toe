@@ -81,7 +81,8 @@ body {
     background-color: #F6F5F3;
 }
 
-input:focus {
+input:focus,
+button:focus {
     border: 2px solid #8CB7F1;
     outline: none;
 }
@@ -177,4 +178,9 @@ input:focus {
 
 .newButton:hover {
     background-color: color-mix(in oklab, var(--button-background), black 7%);
+}
+
+#winnerDisplay {
+    margin-top: 64px;
+    font-size: 3rem;
 }
