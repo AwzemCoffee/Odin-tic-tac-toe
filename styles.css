@@ -72,9 +72,18 @@ h6 {
 /*--- CSS Vars && General Setup */
 :root {
     font-family: roboto;
-    --button-background: #476260;
+    --button-background: #1A435E;
     --minor-text: #EBDDD1;
-    --gameboard-body: #3F8697;
+    --gameboard-body: #0B1D28;
+}
+
+body {
+    background-color: #F6F5F3;
+}
+
+input:focus {
+    border: 2px solid #8CB7F1;
+    outline: none;
 }
 
 /*--- Styling */
@@ -84,7 +93,11 @@ h6 {
 
     display: grid;
     grid-template: 1fr/ 0.5fr 3fr;
+}
 
+.grid-container>.sidebar-container>form,
+.main-content-container {
+    margin-top: 32px;
 }
 
 .sidebar-container {
@@ -98,15 +111,27 @@ h6 {
     flex-direction: column;
     gap: 16px;
     align-items: center;
-    justify-content: center;
 }
 
 .sidebar-container>form>div>label {
-    display: block;
+    display: inline-block;
+    margin: auto;
 }
 
 .sidebar-container>form>div>input {
     width: 75%;
+}
+
+#submit-button {
+    background-color: var(--button-background);
+    color: var(--minor-text);
+    border: 1.5px solid var(--minor-text);
+    border-radius: 6px;
+    width: 200px;
+}
+
+#submit-button:hover {
+    background-color: color-mix(in oklab, var(--button-background), black 7%);
 }
 
 .main-content-container {
@@ -126,7 +151,7 @@ h6 {
 }
 
 .board-container>.boardPlace {
-    background-color: white;
+    background-color: #F6F5F3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +160,7 @@ h6 {
 }
 
 .board-container>.boardPlace:hover {
-    background-color: #EFEEF5;
+    background-color: #8CB7F1;
 }
 
 .newButton {
@@ -151,5 +176,5 @@ h6 {
 }
 
 .newButton:hover {
-    background-color: color-mix(in oklab, var(--button-background), black 3%);
+    background-color: color-mix(in oklab, var(--button-background), black 7%);
 }
