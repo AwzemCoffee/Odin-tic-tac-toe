@@ -105,7 +105,7 @@ const gameController = (() => {
 
         // Mark board
         boardContainer.addEventListener("click", (e) => {
-            if (e.target.matches('.boardPlace') && !roundWinner) {
+            if (e.target.matches('.boardPlace') && !roundWinner && isOccupied(e.target.id) === false) {
                 let target = e.target.id;
                 console.log(target);
                 let internalMarker = e.target.querySelector("p");
@@ -119,7 +119,9 @@ const gameController = (() => {
             const resetBoard = (() => {
                 const boardContainer = document.querySelector(".board-container");
                 const tileMarkerNodes = boardContainer.querySelectorAll("p")
-                console.table(tileMarkerNodes);
+                if (winnerDisplay) {
+                    winnerDisplay.remove();
+                }
                 gameBoard.spaces = new Array(9).fill(null);
                 turnCount = 1;
                 activePlayer = playerOne;

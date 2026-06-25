@@ -128,7 +128,7 @@ button:focus {
     color: var(--minor-text);
     border: 1.5px solid var(--minor-text);
     border-radius: 6px;
-    width: 200px;
+    width: 130px;
 }
 
 #submit-button:hover {
@@ -182,5 +182,5 @@ button:focus {
 
 #winnerDisplay {
     margin-top: 64px;
-    font-size: 3rem;
+    font-size: 2rem;
 }
