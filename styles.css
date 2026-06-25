@@ -72,24 +72,47 @@ h6 {
 /*--- CSS Vars && General Setup */
 :root {
     font-family: roboto;
-    --button-background: #c26b6b;
-    --minor-text: #dadcdd;
-    --gameboard-body: #999EA1;
+    --button-background: #476260;
+    --minor-text: #EBDDD1;
+    --gameboard-body: #3F8697;
 }
 
-body {
+/*--- Styling */
+.grid-container {
     min-height: 100vh;
     min-width: 100vw;
+
+    display: grid;
+    grid-template: 1fr/ 0.5fr 3fr;
+
+}
+
+.sidebar-container {
+    background-color: var(--gameboard-body);
+    box-shadow: 5px 0px 8px 0px rgba(0, 0, 0, 25%);
+    color: var(--minor-text);
+}
+
+.sidebar-container>form {
     display: flex;
     flex-direction: column;
+    gap: 16px;
     align-items: center;
     justify-content: center;
 }
 
-/*--- Styling */
+.sidebar-container>form>div>label {
+    display: block;
+}
+
+.sidebar-container>form>div>input {
+    width: 75%;
+}
+
 .main-content-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .board-container {

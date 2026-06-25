@@ -10,10 +10,27 @@
 </head>
 
 <body>
-    <h1 class="Odin Tic-Tac-Toe"></h1>
-    <div class="main-content-container">
-        <button class="newButton">New</button>
-        <div class="board-container">
+    <div class="grid-container">
+        <div class="sidebar-container">
+            <form class="userDataForm">
+                <div>
+                    <label for="PlayerOneName">Player One</label>
+                    <input type="text" id="PlayerOneName" placeholder="John" name="PlayerTwoName">
+                </div>
+                <div>
+                    <label for="PlayerTwoName">Player Two</label>
+                    <input type="text" id="PlayerTwoName" placeholder="Jarod" name="PlayerTwoName">
+                </div>
+                <div>
+                    <button id="submit-button">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="main-content-container">
+            <button class="newButton">New</button>
+            <div class="board-container">
+            </div>
         </div>
     </div>
 
